@@ -225,10 +225,10 @@ namespace ConsoleApp
                 case 4:
                     Console.WriteLine("Введите имя для поиска: ");
                     name = Console.ReadLine();
-                    Contacts find;
-                    find = phone.find(name);
+                    Contacts human;
+                    human = phone.find(name);
                   
-                    if (find == null)
+                    if (human == null)
                     {
                         Console.WriteLine("контакт {0} не найден", name);
                     }
@@ -236,11 +236,11 @@ namespace ConsoleApp
                     {
                         Console.WriteLine("Контакт:");
                         Console.WriteLine(" Фамилия:{0}\n Имя:{1}\n Отчество:{2}\n Номер:{3}\n Страна:{4}\n Дата рождения:{5}\n Организация:{6}\n Должность:{7}\n Прочее:{8}"
-                            , find.surname, find.name, find.patronymic, find.number, find.country, find.birthday, find.organization, find.post, find.other);
+                            , human.surname, human.name, human.patronymic, human.number, human.country, human.birthday, human.organization, human.post, human.other);
                     }
                     break;
                 case 5:
-                    Console.WriteLine("Контакт:");
+                    Console.WriteLine("Список:");
                     phone.list(
                       delegate (Contacts p)
                       {
