@@ -103,15 +103,15 @@ namespace ConsoleApp
 
         void WorkSpace(int variable)
         {
-            string surname = "";
-            string name = "";
-            string patronymic = "";
-            string number = "";
-            string country = "";
-            string birthday = "";
-            string organization = "";
-            string post = "";
-            string other = "";
+            string surname = null;
+            string name = null;
+            string patronymic = null;
+            string number = null;
+            string country = null;
+            string birthday = null;
+            string organization = null;
+            string post = null;
+            string other = null;
 
             switch (variable)
             {
