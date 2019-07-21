@@ -48,6 +48,7 @@ namespace ConsoleApp
         }
 
 
+
         public bool remove(string name)
         {
             Contacts date = find(name);
@@ -148,50 +149,64 @@ namespace ConsoleApp
                     }
                     else
                     {
+                        int t = 0;
                         string redact = "";
-                        Program edit = new Program();
-                        Console.WriteLine("Введите параметр редактирования: ");
-                        redact = Console.ReadLine();
-                       
-                        switch (redact)
+                        while (t != 1)
                         {
-                            case "фамилия":
-                                Console.WriteLine("Введите новую фамилию: ");
-                                date.surname = Console.ReadLine();
-                                break;
-                            case "имя":
-                                Console.WriteLine("Введите новое имя: ");
-                                date.name = Console.ReadLine();
-                                break;
-                            case "отчество":
-                                Console.WriteLine("введите новое отчество: ");
-                                date.patronymic = Console.ReadLine();
-                                break;
-                            case "номер":
-                                Console.WriteLine("введите новый номер: ");
-                                date.number = Console.ReadLine();
-                                break;
-                            case "страна":
-                                Console.WriteLine("Введите новую стрпану: ");
-                                date.country = Console.ReadLine();
-                                break;
-                            case "дата рождения":
-                                Console.WriteLine("Введите новую дату рождения: ");
-                                date.birthday = Console.ReadLine();
-                                break;
-                            case "организация":
-                                Console.WriteLine("Введите новое название организации: ");
-                                date.organization = Console.ReadLine();
-                                break;
-                            case "должность":
-                                Console.WriteLine("Введите новую должность: ");
-                                date.post = Console.ReadLine();
-                                break;
-                            case "прочее":
-                                Console.WriteLine("Измените прочую информацию: ");
-                                date.other = Console.ReadLine();
-                                break;
+                            Console.WriteLine("Введите параметр редактирования: ");
+                            redact = Console.ReadLine();
+                            switch (redact)
+                            {
+                                case "фамилия":
+                                    Console.WriteLine("Введите новую фамилию: ");
+                                    date.surname = Console.ReadLine();
+                                    break;
+                                case "имя":
+                                    Console.WriteLine("Введите новое имя: ");
+                                    date.name = Console.ReadLine();
+                                    break;
+                                case "отчество":
+                                    Console.WriteLine("введите новое отчество: ");
+                                    date.patronymic = Console.ReadLine();
+                                    break;
+                                case "номер":
+                                    Console.WriteLine("введите новый номер: ");
+                                    date.number = Console.ReadLine();
+                                    break;
+                                case "страна":
+                                    Console.WriteLine("Введите новую стрпану: ");
+                                    date.country = Console.ReadLine();
+                                    break;
+                                case "дата рождения":
+                                    Console.WriteLine("Введите новую дату рождения: ");
+                                    date.birthday = Console.ReadLine();
+                                    break;
+                                case "организация":
+                                    Console.WriteLine("Введите новое название организации: ");
+                                    date.organization = Console.ReadLine();
+                                    break;
+                                case "должность":
+                                    Console.WriteLine("Введите новую должность: ");
+                                    date.post = Console.ReadLine();
+                                    break;
+                                case "прочее":
+                                    Console.WriteLine("Измените прочую информацию: ");
+                                    date.other = Console.ReadLine();
+                                    break;
+                            }
+                            Console.WriteLine("Изменить что-то еще?(да/нет)");
+                            string val = Console.ReadLine();
+                            if (val == "да")
+                            {
+                                t = 0;
+                            }
+                            else
+                            {
+                                t++;
+                                redact = null;
+                            }
                         }
+
                     }
                     break;
                 case 3:
@@ -206,16 +221,8 @@ namespace ConsoleApp
                         Console.WriteLine("Контакт {0} не найден", name);
                     }
                     break;
+               
                 case 4:
-                        Console.WriteLine("Контакт:");
-                        phone.list(
-                          delegate (Contacts p)
-                          {
-                              Console.WriteLine("{0} - {1} - {2}", p.surname, p.name, p.number);
-                          }
-                        );
-                    break;
-                case 5:
                     Console.WriteLine("Введите имя для поиска: ");
                     name = Console.ReadLine();
                     Contacts find;
@@ -224,14 +231,22 @@ namespace ConsoleApp
                     if (find == null)
                     {
                         Console.WriteLine("контакт {0} не найден", name);
-                        Console.ReadKey();
                     }
                     else
                     {
                         Console.WriteLine("Контакт:");
-                        Console.WriteLine("Фамилия:{0}\n Имя:{1}\n Отчество:{2}\n Номер:{3}\n Страна:{4}\n Дата рождения:{5}\n Организация:{6}\n Должность:{7}\n Прочее:{8}"
+                        Console.WriteLine(" Фамилия:{0}\n Имя:{1}\n Отчество:{2}\n Номер:{3}\n Страна:{4}\n Дата рождения:{5}\n Организация:{6}\n Должность:{7}\n Прочее:{8}"
                             , find.surname, find.name, find.patronymic, find.number, find.country, find.birthday, find.organization, find.post, find.other);
                     }
+                    break;
+                case 5:
+                    Console.WriteLine("Контакт:");
+                    phone.list(
+                      delegate (Contacts p)
+                      {
+                          Console.WriteLine("{0} - {1} - {2}", p.surname, p.name, p.number);
+                      }
+                    );
                     break;
             }
         }
