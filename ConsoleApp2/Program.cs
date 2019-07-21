@@ -155,7 +155,7 @@ namespace ConsoleApp
                         {
                             Console.WriteLine("Введите параметр редактирования: ");
                             redact = Console.ReadLine();
-                            switch (redact)
+                            switch (redact.ToLower())
                             {
                                 case "фамилия":
                                     Console.WriteLine("Введите новую фамилию: ");
